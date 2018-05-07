@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Phelaja Blog - Second Post</title>
+    <title>Phelaja Blog - Fourth Post</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Peter Phelan">
@@ -169,13 +169,13 @@
 <article class="post">
    <header>
     <div class="title">
-                    <h1><a href="../../blog/2017/second-post.html">Second Post</a></h1>
+                    <h1><a href="../../blog/2018/fourth-post.html">Fourth Post</a></h1>
 
     </div>
     <div class="meta">
          <time class="published"
-            datetime='Dec 28, 2017'>
-            Dec 28, 2017</time>
+            datetime='May 07, 2018'>
+            May 07, 2018</time>
             <div class="published eta"></div>
         <span class="author"/><span class="name">Peter Phelan</span><img src="../../img/main/pjp.png" alt="Peter Phelan" /></span>
     </div>
@@ -185,69 +185,26 @@
   
          
     <div id="content">
-       <p><b>Deploying Web Apps </b></p>
-<img src="/img/blog/WebApp.png"/>
-<p>This first training post which covers Wep App deployemnt, the first chapter of Azure Desgining and Implementing Websites.
-	The key focus of this post is on <b>AzureRM</b> Poweshell command and once logged into the Azure account <i>(login-azureRMAccount)</i> 
-	we're good to go. The required AzureRM resources are;
-	<ul style="list-style-type:disc">
-		<li><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup">AzureRm<b>ResourceGroup</b></a> - Creating  a new Resource Group</li>
-		<li><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermappserviceplan">AzureRM<b>AppServicePlan</b></a> - Creating a new App Service Plan within that Resource Group</li>
-		<li><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebapp">AzureRM<b>WebApp</b></a> - Creating a new App within the Service Plan </li>
-		<li><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebappslot">AzureRM<b>WebAppSlot</b></a> - Creating a new Web App Deployment Slot for staged publishing </li>
-	  </ul>  
-	The PowerShell code required to achieve this is as follows;
-</p>
+       <p><b>Configuring Web Apps </b></p>
+<p>This fourth post covers covers the configuration of the Web Apps just created in post 2.</p>
+<img src="/img/blog/configure01.png"/>
+
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/app-service/web-sites-configure">http://Azure-App-Service</a></li>
+</ul>
+
 <pre class="prettyprint">
 	<code>
-		# Replace the following URL with a public GitHub repo URL
-		$gitrepo="https://github.com/phelaja/DeployWebsites.git"
-		$webappname="mywebapp$(Get-Random)"
-		$location="West Europe"
-		$ResourceGroup="PhelajaTraining"
-		
-		# Create a resource group.
-		New-AzureRmResourceGroup -Name $ResourceGroup -Location $location
-		
-		# Create an App Service plan in Free tier.
-		New-AzureRmAppServicePlan -Name $webappname -Location $location `
-		-ResourceGroupName $ResourceGroup -Tier Free
-		
-		# Create a web app.
-		New-AzureRmWebApp -Name $webappname -Location $location `
-		-AppServicePlan $webappname -ResourceGroupName $ResourceGroup
-		
-		# Upgrade App Service plan to Standard tier (minimum required by deployment slots)
-		Set-AzureRmAppServicePlan -Name $webappname -ResourceGroupName $ResourceGroup `
-		-Tier Standard
-		
-		#Create a deployment slot with the name "staging".
-		New-AzureRmWebAppSlot -Name $webappname -ResourceGroupName $ResourceGroup `
-		-Slot staging
-		
-		# Configure GitHub deployment to the staging slot from your GitHub repo and deploy once.
-		$PropertiesObject = @{
-			repoUrl = "$gitrepo";
-			branch = "master";
-		}
-		Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName $ResourceGroup `
-		-ResourceType Microsoft.Web/sites/slots/sourcecontrols `
-		-ResourceName $webappname/staging/web -apiversion 2016-08-01 -Force
-		
-		# Swap the verified/warmed up staging slot into production.
-		Swap-AzureRmWebAppSlot -Name $webappname -ResourceGroupName $ResourceGroup `
-		-SourceSlotName staging -DestinationSlotName production
+	package phelaja.org;
+	public class Oven {
+		public static void main(String[] args) {
+			System.out.print("Baking!");
+	  }
+	}
 	</code>
 </pre>
 
-<p>To Remove the deployment i.e. reverse the above the simplest method to Remove the Resource Group that this deployemnt sits within. 
-	The following script will achieve this;
-</p>
-<pre class="prettyprint">
-		<code>
-		Remove-AzureRmResourceGroup -Name myResourceGroup -Force
-		</code>
-	</pre>
+<p>All Buid Scripts will be loaded as above.</p>
 
     </div>
 	
@@ -256,43 +213,43 @@
 <!-- Social Share Button HTML -->
 
 <!-- Twitter -->
-<li><a href="//twitter.com/share?url=https://phelaja.github.io//blog/2017/second-post.html&text=Second Post&via=Phelaja" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https://phelaja.github.io//blog/2018/fourth-post.html&text=Fourth Post&via=Phelaja" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 <!-- Google Plus -->
-<li><a href="//plus.google.com/share?url=https://phelaja.github.io//blog/2017/second-post.html" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https://phelaja.github.io//blog/2018/fourth-post.html" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 <!-- Facebook -->
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https://phelaja.github.io//blog/2017/second-post.html" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https://phelaja.github.io//blog/2018/fourth-post.html" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 <!-- Reddit (url, title) -->
-<li><a href="//reddit.com/submit?url=https://phelaja.github.io//blog/2017/second-post.html&title=Second Post" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https://phelaja.github.io//blog/2018/fourth-post.html&title=Fourth Post" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 <!-- LinkedIn -->
-<li><a href="//www.linkedin.com/shareArticle?url=https://phelaja.github.io//blog/2017/second-post.html&title=Second Post" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https://phelaja.github.io//blog/2018/fourth-post.html&title=Fourth Post" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 <!-- StumbleUpon (url, title) -->
-<li><a href="//www.stumbleupon.com/submit?url=https://phelaja.github.io//blog/2017/second-post.html&title=Second Post" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https://phelaja.github.io//blog/2018/fourth-post.html&title=Fourth Post" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 <!-- Email -->
-<li><a href="mailto:?subject=Check out this post by Peter Phelan&body=https://phelaja.github.io//blog/2017/second-post.html" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Peter Phelan&body=https://phelaja.github.io//blog/2018/fourth-post.html" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
