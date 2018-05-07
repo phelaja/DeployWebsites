@@ -10,6 +10,17 @@
     },
     "items": [
         {
+            "id": "https://phelaja.github.io//blog/2018/fourth-post.html",
+            
+           
+            "url": "https://phelaja.github.io//blog/2018/fourth-post.html",
+            "date_published": "2018-05-07T00:00:00+01:00",
+            "date_modified": "2018-05-07T00:00:00+01:00",
+            "author" : "Peter Phelan",
+            "tags": [ "blog" ],
+            "content_html" : "<p><b>Configuring Web Apps <\/b><\/p>\n<p>This fourth post covers covers the configuration of the Web Apps just created in post 2.<\/p>\n<img src=\"/img/blog/config.png\"/>\n\n<ul>\n<li><a href=\"https://azure.microsoft.com/en-gb/services/app-service/web/\">http://Azure-App-Service<\/a><\/li>\n<\/ul>\n\n<pre class=\"prettyprint\">\n\t<code>\n\tpackage phelaja.org;\n\tpublic class Oven {\n\t\tpublic static void main(String[] args) {\n\t\t\tSystem.out.print(\"Baking!\");\n\t }\n\t}\n\t<\/code>\n<\/pre>\n\n<p>All Buid Scripts will be loaded as above.<\/p>\n"
+        }, 
+        {
             "id": "https://phelaja.github.io//blog/2017/third-post.html",
             
            
